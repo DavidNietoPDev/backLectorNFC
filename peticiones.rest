@@ -4,7 +4,7 @@ POST http://localhost:3000/api/users/register
   Content-Type: application/json
 
   {
-    "username": "David",
+    "username": "niputaidea@gmail.com",
     "password": "12345"
   }
 
@@ -14,6 +14,6 @@ POST http://localhost:3000/api/users/register
   Content-Type: application/json
 
   {
-    "username": "David",
+    "username": "niputaidea@gmail.com",
     "password": "12345"
   }
