@@ -1,5 +1,4 @@
 import express from 'express';
-
 const jwt = require('jsonwebtoken');
 
 const checkToken = (req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -21,4 +20,4 @@ const checkToken = (req: express.Request, res: express.Response, next: express.N
 }
 
 
-module.exports =  checkToken ;
+module.exports =  checkToken; 
