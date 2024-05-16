@@ -1,5 +1,6 @@
 import express from 'express';
 const jwt = require('jsonwebtoken');
+const { getSecretKeyDb } = require('../utils/secretKey');
 
 const checkToken = (req: express.Request, res: express.Response, next: express.NextFunction) => {
     if(!req.headers['authorization']) {
@@ -19,5 +20,21 @@ const checkToken = (req: express.Request, res: express.Response, next: express.N
     next();
 }
 
+async function createToken(user: any) {
+    try {
+        const payload = {
+            user_id: user.id,
+            user_role: user.role
+        };
+        const secretKey = await getSecretKeyDb();
+        const token = jwt.sign(payload, secretKey);
+        return token;
+    } catch (error) {
+        console.error('Error al generar el token:', error);
+        throw error;
+    }
+}
 
-module.exports =  checkToken; 
+
+
+module.exports = { checkToken, createToken }; 
