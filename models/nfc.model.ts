@@ -1,9 +1,24 @@
-const { model, Schema } = require('mongoose');
 
+import { Document, Schema } from "mongoose";
+import mongoose from "mongoose";
+
+interface Nfc extends Document {
+    eventName: string;
+    hashCodes: string[];
+}
 
 const nfcSchema = new Schema({
-    nfcCode: String,
-    hashCode: String,
+    eventName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    hashCodes: {
+        type: [String],
+        required: true
+    }
 });
 
-module.exports = model('nfc', nfcSchema);
+const Nfc = mongoose.model<Nfc>('Nfc', nfcSchema);
+
+export default Nfc;

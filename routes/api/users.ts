@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { Error } from "mongoose";
 const router = require('express').Router();
 const User = require('../../models/user.model');
 const bcrypt = require('bcryptjs');
@@ -17,7 +16,6 @@ router.post('/register', async (req: Request, res: Response) => {
                 error: 'Por favor, introduce un correo electrónico válido'
             });
         }
-
         //verificar si está duplicado en bbdd
         const userNew = await User.findOne({ email: req.body.email });
         if (userNew) {
